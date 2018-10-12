@@ -8,3 +8,4 @@ suck on my balls.pdf
 mpb = MusicPlayerBackend.MusicPlayerBackend()
 
 print(mpb.writeHello("Tere külalised!"))
+mpb.soundFilePlay("SampleMusic.wma")
