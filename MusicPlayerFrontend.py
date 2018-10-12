@@ -1,11 +1,33 @@
+# Kivy imports
+from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.button import Button
+
 import MusicPlayerBackend
-"""
-import filename
-MusicPlayerBackend for short is mpb
-Use mpb to access the functions in MusicPlayerBackend.py
-suck on my balls.pdf
-"""
+
+class TestScreen(GridLayout):
+    def __init__(self, **kwargs):
+        super(TestScreen, self).__init__(**kwargs)
+        
+        self.cols = 2
+        self.row = 2
+        
+        self.buttonSoundPlay = Button(text = "Play music")
+        self.buttonSoundPlay.bind(on_press = self.playSound)
+        self.add_widget(self.buttonSoundPlay)
+        
+    def playSound(self, instance):
+        print("Played a sound!")
+        mpb.soundFilePlay("SampleMusic.wma")
+
+class MusicPlayer(App):
+    def build(self):
+        return TestScreen()
+        
+
+""" Use mpb to access backend methods"""
 mpb = MusicPlayerBackend.MusicPlayerBackend()
 
-print(mpb.writeHello("Tere külalised!"))
-mpb.soundFilePlay("SampleMusic.wma")
+""" MusicPlayer().run() käivitab programmi"""
+if __name__ == "__main__":
+    MusicPlayer().run()
