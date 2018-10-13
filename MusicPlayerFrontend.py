@@ -20,7 +20,7 @@ class TestScreen(GridLayout):
         print("Played a sound!")
         mpb.soundFilePlay("SampleMusic.wma")
 
-class MusicPlayer(App):
+class MusicPlayerApp(App):
     def build(self):
         return TestScreen()
         
@@ -30,4 +30,4 @@ mpb = MusicPlayerBackend.MusicPlayerBackend()
 
 """ MusicPlayer().run() käivitab programmi"""
 if __name__ == "__main__":
-    MusicPlayer().run()
+    MusicPlayerApp().run()
