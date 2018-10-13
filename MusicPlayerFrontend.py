@@ -20,7 +20,8 @@ class TestScreen(GridLayout):
         print("Played a sound!")
         mpb.soundFilePlay("SampleMusic.wma")
 
-# Kivy requires writing App after the class name
+# Kivy requires writing App after the class name to access .kv files
+# MusicPlayerApp manages different screens in the app
 class MusicPlayerApp(App):
     def build(self):
         return TestScreen()
