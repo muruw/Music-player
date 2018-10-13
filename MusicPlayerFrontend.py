@@ -12,7 +12,7 @@ class TestScreen(GridLayout):
         self.cols = 2
         self.row = 2
         
-        self.buttonSoundPlay = Button(text = "Play music")
+        self.buttonSoundPlay = Button(text = "Play soundtrack")
         self.buttonSoundPlay.bind(on_press = self.playSound)
         self.add_widget(self.buttonSoundPlay)
         
