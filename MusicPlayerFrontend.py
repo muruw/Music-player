@@ -15,16 +15,8 @@ for kv in listdir(kv_path):
     Builder.load_file(kv_path + kv)
 
 class MainMenuScreen(Screen):
-    """
-    display = ObjectProperty()
-    
-    def browseMusicFile(self):
-        print("Valid faili")
-        
-    def playMusic(self):
-        print("Muusika käib")
-    """
     pass
+
 class MusicScreen(Screen):
     def playMusic(self):
         mpb.soundFilePlay("ShortMusic.mp3")
