@@ -4,6 +4,9 @@ from kivy.uix.button import Button
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+# Use mpb to access backend methods
+import MusicPlayerBackend
+mpb = MusicPlayerBackend.MusicPlayerBackend()
 
 from os import listdir
 kv_path = "./kivyFiles/"
@@ -23,7 +26,8 @@ class MainMenuScreen(Screen):
     """
     pass
 class MusicScreen(Screen):
-    pass
+    def playMusic(self):
+        mpb.soundFilePlay("ShortMusic.mp3")
 
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
