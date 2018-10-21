@@ -1,0 +1,53 @@
+<MainMenuScreen>:
+	BoxLayout:
+		orientation: "vertical"
+		Button:
+			text: "Play music"
+			font_size: dp(50)
+			on_release: root.manager.current = "music"
+		Button:
+			text: "Choose a file"
+			font_size: dp(50)
+			on_release: root.manager.current = "file_chooser"
+			
+<MusicScreen>:
+	BoxLayout:
+		orientation: "horizontal"
+		Button:
+			text: "Play the file"
+			font_size: dp(50)
+			on_release: root.playMusic()
+		Button:
+			text: "Go back to main menu"
+			font_size: dp(30)
+			on_release: root.manager.current = "main_menu"
+			
+<FileChooserScreen>:
+    label: label
+    orientation: 'vertical'
+    BoxLayout:
+        FileChooserListView:
+            canvas.before:
+                Color:
+                    rgb: .4,.5,.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            on_selection: root.selectFile(*args)
+        FileChooserIconView:
+            canvas.before:
+                Color:
+                    rgb: .5,.4,.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            on_selection: root.selectFile(*args)
+    Label:
+        id: label
+        size_hint_y: .1
+        canvas.before:
+            Color:
+                rgb: .5,.5,.4
+            Rectangle:
+                pos: self.pos
+                size: self.size
