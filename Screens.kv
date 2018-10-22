@@ -1,39 +1,70 @@
 <MainMenuScreen>:
-	BoxLayout:
-		orientation: "vertical"
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "background.png"
+	FloatLayout:
 		Button:
-			text: "Play music"
-			font_size: dp(50)
+			background_normal: "play_button.png"
 			on_release: root.manager.current = "music"
+			size_hint: 0.15, 0.15
+			pos_hint: {"x": 0.15, "top": 0.5}
+			
 		Button:
-			text: "Choose a file"
-			font_size: dp(50)
+			background_normal: "audio_button.png"
 			on_release: root.manager.current = "file_chooser"
+			size_hint: 0.1, 0.15
+			pos_hint: {"x": 0.4, "top": 0.5 }
+			
+		Button:
+			background_normal: "delete_button.png"
+			pos_hint: {"x": 0.65, "top": 0.5}
+			size_hint: 0.15, 0.15
+		Label:
+			pos_hint: {"x": 0.33, "top": 0.9}
+			size_hint: 0.3, 0.3
+			text: "Music Player"
+			color: 0.1333, 0.694, 0.302, 1
+			font_size: dp(30)
+			
 			
 <MusicScreen>:
-	BoxLayout:
-		orientation: "horizontal"
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "background.png"
+	FloatLayout:
 		Button:
-			text: "Play the file"
-			font_size: dp(50)
-			on_release: root.playMusic()
+			background_normal: "play_button.png"
+			pos_hint: {"x": 0.15, "top": 0.5}
+			size_hint: 0.15, 0.15
+			on_press: root.playMusic()
 		Button:
-			text: "Go back to main menu"
-			font_size: dp(30)
+			background_normal: "pause_button.png"
+			pos_hint: {"x": 0.4, "top": 0.5}
+			size_hint: 0.15, 0.15
+			on_press: root.pauseMusic()
+		Button:
+			background_normal: "delete_button.png"
+			pos_hint: {"x": 0.65, "top": 0.5}
+			size_hint: 0.15, 0.15
 			on_release: root.manager.current = "main_menu"
+		Label:
+			pos_hint: {"x": 0.33, "top": 0.9}
+			size_hint: 0.3, 0.3
+			text: str(root.soundName)
+			color: 0.1333, 0.694, 0.302, 1
+			font_size: dp(30)
+		
+				
+					
 			
 <FileChooserScreen>:
     label: label
     orientation: 'vertical'
     BoxLayout:
-        FileChooserListView:
-            canvas.before:
-                Color:
-                    rgb: .4,.5,.5
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-            on_selection: root.selectFile(*args)
         FileChooserIconView:
             canvas.before:
                 Color:
