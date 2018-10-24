@@ -41,6 +41,7 @@
 			pos_hint: {"x": 0.15, "top": 0.5}
 			size_hint: 0.1, 0.1
 			on_press: root.playMusic()
+			on_press: root.soundNameChange()
 		Button:
 			background_normal: "pause_button.png"
 			pos_hint: {"x": 0.4, "top": 0.5}
@@ -81,7 +82,7 @@
 			size_hint_x: .7
 			canvas.before:
 				Color:
-					rgb: 0.1333, 0.694, 0.302, 1
+					rgb: 1, 0.694, 0.302, 1
 				Rectangle:
 					pos: self.pos
 					size: self.size

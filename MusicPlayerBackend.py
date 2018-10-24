@@ -4,40 +4,45 @@ from pathlib import Path
 
 class MusicPlayerBackend:
 
+    # The file we are currently playing
     soundFile = ""
+    soundFilePath = ""
 
     def __init__(self):
         pass
     
-    def soundFilePlay(self, soundFileNameString):
-        soundFile = soundFileNameString
-        if soundFile is not None:
-            print("Sound found at %s" % soundFile.source)
-            print("Sound is %.3f seconds" % soundFile.length)
+    def soundFilePlay(self):
+        soundName = self.soundFilePath
+        try:
+            print("Sound found at %s" % soundName.source)
+            print("Sound is %.3f seconds" % soundName.length)
+            self.soundFile = (Path(soundName.source).parts)[-1]
             # The sound plays til it's stopped 
-            soundFile.loop = True
-            soundFile.play()
-            print(soundFile.state)
+            soundName.loop = True
+            soundName.play()
+            print("Playfile: " + str(soundName.state))
+        except:
+            pass
         
     
-    def soundFilePause(self, soundFileStr):
-        sound = soundFileStr
+    def soundFilePause(self):
+        sound = self.soundFilePath
         
-        if sound.state == "play":
-            sound.stop()
-            print(sound.state)
-            
+        # We must pass the error if sound == "", otherwise the application would crash
+        try:
+            if sound.state == "play":
+                sound.stop()
+                print("SoundFilePause() " + sound.state)
+        except:
+            pass
+        
     def soundFileLoader(self, soundName):
         
         # This function will preload the given song
-        self.soundFile = SoundLoader.load(soundName)
+        self.soundFilePath = SoundLoader.load(soundName)
         
         return self.soundFile
-    
-    def soundFileNameLoader(self, soundName):
-        correctedFileName = Path(soundName.source).parts
-        
-        return correctedFileName[-1]
+
     
 
 

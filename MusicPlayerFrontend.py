@@ -24,6 +24,8 @@ kv_path = "./kivyFiles/"
 for kv in listdir(kv_path):
     print(kv)
     Builder.load_file(kv_path + kv)
+    
+
 
 class MainMenuScreen(Screen):
     pass
@@ -34,17 +36,19 @@ class MusicScreen(Screen):
     def playMusic(self):
         # At the moment it is hardcoded but later we will use
         # the fileChooser to choose the song
-        mpb.soundFilePlay(mpb.soundFile)
+        mpb.soundFilePlay()
         print(self.soundName)
-        self.soundNameChange(str(mpb.soundFile))
+        self.soundNameChange()
+        
+        
     def pauseMusic(self):
         # Pause the sound currently being played
-        mpb.soundFilePause(mpb.soundFile)
+        mpb.soundFilePause()
         
-    def soundNameChange(self, name):
+    def soundNameChange(self):
         # This function changes the label to the song
         # we are playing at that moment
-        self.soundName = name
+        self.soundName = mpb.soundFile
         
 
 
@@ -57,7 +61,6 @@ class FileChooserScreen(Screen):
             self.label.text = args[1][0]
             print("test!!", str(args[1][0]))            
             mpb.soundFileLoader(args[1][0])
-            MusicScreen.soundNameChange(str(mpb.soundFileNameLoader(mpb.soundFile)))
             
         except:
             pass
