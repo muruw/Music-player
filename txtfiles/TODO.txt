@@ -1,0 +1,11 @@
+Playlist creator
+
+Main menu:
+	soundcloudi nupp, local playlisti nupp
+	
+	
+
+playlisti aken:
+	faili nupp (lisa fail)
+	play/paus
+	kõrval playlistis olevad laulud

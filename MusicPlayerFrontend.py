@@ -58,8 +58,7 @@ class FileChooserScreen(Screen):
     
     def selectFile(self, *args):
         try:
-            self.label.text = args[1][0]
-            print("test!!", str(args[1][0]))            
+            self.label.text = args[1][0]          
             mpb.soundFileLoader(args[1][0])
             
         except:
