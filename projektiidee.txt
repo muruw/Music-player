@@ -1,5 +1,5 @@
-Marcus Murum‰e ja Rando Leppik
+Marcus Murum√§e ja Rando Leppik
 
-Idee on luua multiplatformiline programm, mis m‰ngib erinevaid kasutajale meelep‰raseid audiofaile ja
-lubab koostada playliste ning programm automaatselt salvestab need ‰ra
-Lisaks on idee siduda programm SoundCloudiga kasutades selle APId, et oleks vıimalik striimida SoundCloudist.
+Idee on luua multiplatformiline programm, mis m√§ngib erinevaid kasutajale meelep√§raseid audiofaile ja
+lubab koostada playliste ning programm automaatselt salvestab need √§ra. Kasutame Kivyt kasutajaliidese tegemiseks.
+Lisaks on idee siduda programm SoundCloudiga kasutades selle APId, et oleks v≈ëimalik striimida SoundCloudist.
