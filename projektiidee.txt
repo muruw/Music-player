@@ -1,0 +1,5 @@
+Marcus Murumäe ja Rando Leppik
+
+Idee on luua multiplatformiline programm, mis mängib erinevaid kasutajale meelepäraseid audiofaile ja
+lubab koostada playliste ning programm automaatselt salvestab need ära
+Lisaks on idee siduda programm SoundCloudiga kasutades selle APId, et oleks võimalik striimida SoundCloudist.
