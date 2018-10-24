@@ -34,25 +34,34 @@ class MusicScreen(Screen):
     def playMusic(self):
         # At the moment it is hardcoded but later we will use
         # the fileChooser to choose the song
-        mpb.soundFilePlay(mpb.soundFileLoader().get(0))
-        self.soundNameChange(str(mpb.soundFileNameLoader().get(0)))
-        print(self.soundName)        
+        mpb.soundFilePlay(mpb.soundFile)
+        print(self.soundName)
+        self.soundNameChange(str(mpb.soundFile))
     def pauseMusic(self):
-        mpb.soundFilePause(mpb.soundFileLoader().get(0))
+        # Pause the sound currently being played
+        mpb.soundFilePause(mpb.soundFile)
         
     def soundNameChange(self, name):
-            # This function changes the label to the song
-            # we are playing at that moment
+        # This function changes the label to the song
+        # we are playing at that moment
         self.soundName = name
         
 
+
 class FileChooserScreen(Screen):
+    # File we are going to play
+    soundFile = ""
+    
     def selectFile(self, *args):
         try:
             self.label.text = args[1][0]
+            print("test!!", str(args[1][0]))            
+            mpb.soundFileLoader(args[1][0])
+            MusicScreen.soundNameChange(str(mpb.soundFileNameLoader(mpb.soundFile)))
+            
         except:
             pass
-        
+    
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
 sm.add_widget(MusicScreen(name = "music"))

@@ -1,14 +1,13 @@
 from kivy.core.audio import SoundLoader
 
-
+from pathlib import Path
 
 class MusicPlayerBackend:
 
+    soundFile = ""
+
     def __init__(self):
         pass
-    
-    def writeHello(self, helloString):
-        return helloString
     
     def soundFilePlay(self, soundFileNameString):
         soundFile = soundFileNameString
@@ -19,27 +18,26 @@ class MusicPlayerBackend:
             soundFile.loop = True
             soundFile.play()
             print(soundFile.state)
+        
     
     def soundFilePause(self, soundFileStr):
         sound = soundFileStr
-        print(sound.state)
         
         if sound.state == "play":
             sound.stop()
-    
-    def soundFileLoader(self):
-        # Let's put all the songs into a dictionary,
-        # later we will use filechooser to access this function
-        soundFilesDict = {}
-        soundFilesDict[0] = SoundLoader.load("titanium.ogg")
-        print(soundFilesDict)
-        return soundFilesDict
-    
-    def soundFileNameLoader(self):
-        soundFileNameDict = {}
-        soundFileNameDict[0] = "titanium.ogg"
+            print(sound.state)
+            
+    def soundFileLoader(self, soundName):
         
-        return soundFileNameDict
+        # This function will preload the given song
+        self.soundFile = SoundLoader.load(soundName)
+        
+        return self.soundFile
+    
+    def soundFileNameLoader(self, soundName):
+        correctedFileName = Path(soundName.source).parts
+        
+        return correctedFileName[-1]
     
 
 
