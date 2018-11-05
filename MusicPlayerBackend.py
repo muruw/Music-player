@@ -9,7 +9,7 @@ class MusicPlayerBackend:
 
     # The file we are currently playing
     soundFile = ""
-    soundFilePath = ""
+    soundFilePath = None
 
     def soundFilePlay(self):
         soundName = self.soundFilePath
@@ -28,7 +28,6 @@ class MusicPlayerBackend:
             pass
 
 
-
     def soundFilePause(self):
         sound = self.soundFilePath
 
@@ -41,19 +40,19 @@ class MusicPlayerBackend:
             pass
 
     def soundFileLoader(self, soundName):
+
         # This function will preload the given song
-        if self.soundFilePath == "":
+        if not self.soundFilePath:
             self.soundFilePath = SoundLoader.load(soundName)
         else:
-            self.soundFilePath.state = "stop"
+            self.soundFilePath.stop()
             self.soundFilePath = SoundLoader.load(soundName)
             print("State = play")
 
 
 
+
 class Database:
-
-
 
     def __init__(self):
         self.databaseConnection = sqlite3.connect("MusicPlayerDatabase.db")
@@ -74,10 +73,10 @@ class Database:
 
     def DatabaseInsertFile(self, fileLocation, fileName):
 
-
         self.databaseConnection.execute("INSERT INTO MusicFiles(fileLocation, fileName) VALUES ('" +
                                         fileLocation + "', '" +
                                         fileName + "')")
+
         print(MusicPlayerBackend.soundFilePath)
         print("Commit successful INFO 02: DatabaseInsertFile()")
         self.databaseConnection.commit()

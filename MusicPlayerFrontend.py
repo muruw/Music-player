@@ -35,13 +35,14 @@ class MusicScreen(Screen):
     soundName = StringProperty()
 
     def playMusic(self):
-        #
+
+        db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
         mpb.soundFilePlay()
         print(self.soundName)
         self.soundNameChange()
 
         # Adding the song to the playlist
-        db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
+
 
     def pauseMusic(self):
         # Pause the sound currently being played
