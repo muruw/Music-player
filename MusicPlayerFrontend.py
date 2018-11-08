@@ -26,6 +26,7 @@ for kv in listdir(kv_path):
 
 # We will initialize the database
 db.DatabaseSetup()
+print(db.ListViewObjects())
 
 class MainMenuScreen(Screen):
     pass
@@ -40,7 +41,7 @@ class MusicScreen(Screen):
         mpb.soundFilePlay()
         print(self.soundName)
         self.soundNameChange()
-
+        print(MusicPlayerBackend.ListViewItem("karl", "tartu"))
         # Adding the song to the playlist
 
 
@@ -76,6 +77,7 @@ class MusicPlayerFrontendApp(App):
     def build(self):
         self.title = "Music Player"
         return sm
+
 
 
 if __name__ == "__main__":

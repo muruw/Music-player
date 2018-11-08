@@ -27,7 +27,6 @@ class MusicPlayerBackend:
         except:
             pass
 
-
     def soundFilePause(self):
         sound = self.soundFilePath
 
@@ -48,8 +47,6 @@ class MusicPlayerBackend:
             self.soundFilePath.stop()
             self.soundFilePath = SoundLoader.load(soundName)
             print("State = play")
-
-
 
 
 class Database:
@@ -80,3 +77,26 @@ class Database:
         print(MusicPlayerBackend.soundFilePath)
         print("Commit successful INFO 02: DatabaseInsertFile()")
         self.databaseConnection.commit()
+
+    def ListViewObjects(self):
+
+        data_items = {}
+        try:
+            result = self.cursor.execute("SELECT fileLocation, fileName FROM MusicFiles")
+
+            for data in result:
+                data_items[data[0]] = data[1]
+        except:
+            pass
+
+        return data_items
+
+
+class ListViewItem(object):
+
+    # Object for the ListView
+
+    def __init__(self, sound_name = "", file_location = ""):
+        self.soundName = sound_name
+        self.fileLocation = file_location
+
