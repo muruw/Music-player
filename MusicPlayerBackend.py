@@ -88,7 +88,7 @@ class Database:
                 data_items[data[0]] = data[1]
         except:
             pass
-
+        print(data_items)
         return data_items
 
 
