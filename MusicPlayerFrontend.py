@@ -9,8 +9,9 @@ kivy.require("1.10.0")
 
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.boxlayout import BoxLayout
 
 from kivy.core.window import Window
 
@@ -26,7 +27,8 @@ for kv in listdir(kv_path):
 
 # We will initialize the database
 db.DatabaseSetup()
-print(db.ListViewObjects())
+print("LVO: " + str(db.ListViewObjects()))
+
 
 class MainMenuScreen(Screen):
     pass
@@ -34,6 +36,8 @@ class MainMenuScreen(Screen):
 
 class MusicScreen(Screen):
     soundName = StringProperty()
+    sound_data = ListProperty()
+    selected_value = StringProperty("Select a song")
 
     def playMusic(self):
 
@@ -41,18 +45,22 @@ class MusicScreen(Screen):
         mpb.soundFilePlay()
         print(self.soundName)
         self.soundNameChange()
-        print(MusicPlayerBackend.ListViewItem("karl", "tartu"))
+
         # Adding the song to the playlist
 
-
     def pauseMusic(self):
+
         # Pause the sound currently being played
         mpb.soundFilePause()
 
     def soundNameChange(self):
+
         # This function changes the label to the song
         # we are playing at that moment
         self.soundName = mpb.soundFile
+
+    def playlist(self, change):
+        self.selected_value = "Selected: {}".format(change.text)
 
 
 class FileChooserScreen(Screen):
@@ -77,7 +85,6 @@ class MusicPlayerFrontendApp(App):
     def build(self):
         self.title = "Music Player"
         return sm
-
 
 
 if __name__ == "__main__":
