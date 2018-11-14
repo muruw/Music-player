@@ -35,6 +35,7 @@ class MainMenuScreen(Screen):
 
 class MusicScreen(Screen):
 
+
     sound_names_list = []
     soundDirectory = db.ListViewObjects()
     for sound_name in soundDirectory.items():
@@ -43,12 +44,9 @@ class MusicScreen(Screen):
     soundName = StringProperty()
     sound_data = ListProperty(sound_names_list)
 
-
-
-
     def playMusic(self):
 
-        db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
+        #db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
         mpb.soundFilePlay()
         print(self.soundName)
         self.soundNameChange()
@@ -65,6 +63,11 @@ class MusicScreen(Screen):
         # This function changes the label to the song
         # we are playing at that moment
         self.soundName = mpb.soundFile
+
+    def insertToDatabase(self):
+
+        # Arguments are taken from MusicPlayerBackend
+        db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
 
 
 class FileChooserScreen(Screen):

@@ -83,11 +83,20 @@ class Database:
         data_items = {}
         try:
             result = self.cursor.execute("SELECT fileLocation, fileName FROM MusicFiles")
-
             for data in result:
                 data_items[data[0]] = data[1]
+
         except:
             pass
+
         print(data_items)
         return data_items
+
+    def getSoundLocation(self, sound_name):
+
+        try:
+            result = self.cursor.execute("SELECT fileLocation FROM MusicFiles WHERE fileName = ?", sound_name)
+            MusicPlayerBackend().soundFilePath = result
+        except:
+            pass
 

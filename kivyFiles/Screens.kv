@@ -25,12 +25,6 @@
 			pos_hint: {"x": 0.65, "top": 0.59}
 			size_hint: 0.1, 0.12
 
-<SoundNameButton>:
-    on_press: app.root.playlist_change(*args)
-    selected_color: 1, .3, .5, 0
-    deselected_color: 0, 0, 0, 1
-    background_color: 0, 0.4, 0.5, 1
-
 
 <MusicScreen>:
 	canvas.before:
@@ -58,7 +52,9 @@
 			background_normal: "stop_button.png"
 			pos_hint: {"x": 0.53, "top": 0.92}
 			size_hint: 0.080, 0.105
+			on_press: root.insertToDatabase()
             on_press: root.sound_data.append(str(root.soundName))
+
 		Button:
 			background_normal: "next_button.png"
 			pos_hint: {"x": 0.62, "top": 0.92}
