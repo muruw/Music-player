@@ -91,12 +91,3 @@ class Database:
         print(data_items)
         return data_items
 
-
-class ListViewItem(object):
-
-    # Object for the ListView
-
-    def __init__(self, sound_name = "", file_location = ""):
-        self.soundName = sound_name
-        self.fileLocation = file_location
-

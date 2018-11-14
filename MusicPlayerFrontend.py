@@ -11,7 +11,6 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.boxlayout import BoxLayout
 
 from kivy.core.window import Window
 
@@ -35,9 +34,17 @@ class MainMenuScreen(Screen):
 
 
 class MusicScreen(Screen):
+
+    sound_names_list = []
+    soundDirectory = db.ListViewObjects()
+    for sound_name in soundDirectory.items():
+        sound_names_list.append(sound_name[1])
+
     soundName = StringProperty()
-    sound_data = ListProperty()
-    selected_value = StringProperty("Select a song")
+    sound_data = ListProperty(sound_names_list)
+
+
+
 
     def playMusic(self):
 
@@ -59,11 +66,10 @@ class MusicScreen(Screen):
         # we are playing at that moment
         self.soundName = mpb.soundFile
 
-    def playlist(self, change):
-        self.selected_value = "Selected: {}".format(change.text)
-
 
 class FileChooserScreen(Screen):
+
+
     # File we are going to play
     soundFile = ""
 
