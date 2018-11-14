@@ -70,7 +70,7 @@
 			color: 0, 0, 0, 1
 			font_size: dp(30)
     ListView:
-        size_hint_y: .8
+        size_hint_y: .675
         adapter:
             ListAdapter(data=root.sound_data,
             selection_mode='single',
@@ -78,7 +78,7 @@
             cls=ListItemButton)
         canvas.before:
             Color:
-                rgb: 1,1,1,0
+                rgb: 1,1,0.5,0
             Rectangle:
                 pos: self.pos
                 size: self.size
