@@ -73,10 +73,10 @@ class Database:
         self.databaseConnection.execute("INSERT INTO MusicFiles(fileLocation, fileName) VALUES ('" +
                                         fileLocation + "', '" +
                                         fileName + "')")
-
         print(MusicPlayerBackend.soundFilePath)
         print("Commit successful INFO 02: DatabaseInsertFile()")
         self.databaseConnection.commit()
+
 
     def ListViewObjects(self):
 

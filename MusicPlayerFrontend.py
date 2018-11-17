@@ -35,7 +35,6 @@ class MainMenuScreen(Screen):
 
 class MusicScreen(Screen):
 
-
     sound_names_list = []
     soundDirectory = db.ListViewObjects()
     for sound_name in soundDirectory.items():
@@ -66,8 +65,12 @@ class MusicScreen(Screen):
 
     def insertToDatabase(self):
 
-        # Arguments are taken from MusicPlayerBackend
-        db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
+        if mpb.soundFilePath:
+            # Arguments are taken from MusicPlayerBackend
+            db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
+            self.sound_data.append(str(self.soundName))
+        else:
+            print("Can't insert an empty file")
 
 
 class FileChooserScreen(Screen):
