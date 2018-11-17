@@ -45,14 +45,13 @@ class MusicScreen(Screen):
 
     def playMusic(self):
 
-        #db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
         mpb.soundFilePlay()
         print(self.soundName)
         self.soundNameChange()
 
         # Adding the song to the playlist
-
-    def pauseMusic(self):
+    @staticmethod
+    def pauseMusic():
 
         # Pause the sound currently being played
         mpb.soundFilePause()
@@ -65,7 +64,7 @@ class MusicScreen(Screen):
 
     def insertToDatabase(self):
 
-        if mpb.soundFilePath:
+        if db.DatabaseCheckFile(str(mpb.soundFile)):
             # Arguments are taken from MusicPlayerBackend
             db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
             # It will add a new button to the playlist
@@ -75,7 +74,6 @@ class MusicScreen(Screen):
 
 
 class FileChooserScreen(Screen):
-
 
     # File we are going to play
     soundFile = ""

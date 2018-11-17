@@ -54,7 +54,6 @@ class MusicPlayerBackend:
             self.soundFile = Path(self.soundFilePath.source).parts[-1]
             print("State = play")
 
-
 class Database:
 
     def __init__(self):
@@ -83,6 +82,20 @@ class Database:
         print("Commit successful INFO 02: DatabaseInsertFile()")
         self.databaseConnection.commit()
 
+    def DatabaseCheckFile(self, file_name):
+
+        self.cursor.execute("SELECT fileName FROM MusicFiles")
+        result = self.cursor.fetchall()
+        print(result)
+
+        search_value = (file_name,)
+        print(search_value)
+
+        if search_value not in result:
+            return True
+        else:
+            print("ERROR: DatabaseCheckFile() File already in playlist")
+            return False
 
     def ListViewObjects(self):
 
@@ -91,7 +104,6 @@ class Database:
             result = self.cursor.execute("SELECT fileLocation, fileName FROM MusicFiles")
             for data in result:
                 data_items[data[0]] = data[1]
-
         except:
             pass
 
@@ -105,4 +117,3 @@ class Database:
             MusicPlayerBackend().soundFilePath = result
         except:
             pass
-
