@@ -68,7 +68,8 @@ class MusicScreen(Screen):
         if mpb.soundFilePath:
             # Arguments are taken from MusicPlayerBackend
             db.DatabaseInsertFile(str(mpb.soundFilePath), mpb.soundFile)
-            self.sound_data.append(str(self.soundName))
+            # It will add a new button to the playlist
+            self.sound_data.append(str(mpb.soundFile))
         else:
             print("Can't insert an empty file")
 

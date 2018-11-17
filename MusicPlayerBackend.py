@@ -14,7 +14,7 @@ class MusicPlayerBackend:
     def soundFilePlay(self):
         soundName = self.soundFilePath
         try:
-            self.soundFile = Path(soundName.source).parts[-1]
+            #self.soundFile = Path(soundName.source).parts[-1]
 
             print("Sound found at %s" % soundName.source)
             print("Sound is %.3f seconds" % soundName.length)
@@ -41,11 +41,17 @@ class MusicPlayerBackend:
     def soundFileLoader(self, soundName):
 
         # This function will preload the given song
+
+        # We will check whether the song is already playing to avoid music overlapping
         if not self.soundFilePath:
             self.soundFilePath = SoundLoader.load(soundName)
+            # Path().parts creates a list from a file's path and we will get the
+            # last element in that list, which equals to the file's name
+            self.soundFile = Path(self.soundFilePath.source).parts[-1]
         else:
             self.soundFilePath.stop()
             self.soundFilePath = SoundLoader.load(soundName)
+            self.soundFile = Path(self.soundFilePath.source).parts[-1]
             print("State = play")
 
 
