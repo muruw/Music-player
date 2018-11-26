@@ -1,3 +1,4 @@
+#: import Frontend Frontend
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 #: import ListItemButton kivy.uix.listview.ListItemButton
 
@@ -42,7 +43,6 @@
 			pos_hint: {"x": 0.35, "top": 0.92}
 			size_hint: 0.080, 0.105
 			on_press: root.playMusic()
-			on_press: root.soundNameChange()
     	Button:
 			background_normal: "pause_button.png"
 			pos_hint: {"x": 0.44, "top": 0.92}
@@ -75,7 +75,7 @@
             ListAdapter(data=root.sound_data,
             selection_mode='single',
             allow_empty_selection=False,
-            cls=ListItemButton)
+            cls=Frontend.PlaylistButton)
         canvas.before:
             Color:
                 rgb: 1, 1, 1, 1
@@ -92,9 +92,8 @@
                 size: self.size
         text: "ADVERTISEMENT: https://github.com/muruw/Music-player"
 
-
-
-
+<PlaylistButton>:
+    on_press: root.get_button_index(self.index)
 
 <FileChooserScreen>:
     label: label
