@@ -66,7 +66,7 @@
 		Label:
 			pos_hint: {"x": 0.33, "top": 0.90}
 			size_hint: 0.3, 0.3
-			text: str(root.soundName)
+			text: root.soundName
 			color: 0, 0, 0, 1
 			font_size: dp(30)
     ListView:
@@ -74,7 +74,7 @@
         adapter:
             ListAdapter(data=root.sound_data,
             selection_mode='single',
-            allow_empty_selection=False,
+            allow_empty_selection=True,
             cls=Frontend.PlaylistButton)
         canvas.before:
             Color:
@@ -93,7 +93,10 @@
         text: "ADVERTISEMENT: https://github.com/muruw/Music-player"
 
 <PlaylistButton>:
+    selected_color: 200, 200, 200, 1
+    deselected_color: 0, 0, 0, 1
     on_press: root.get_button_index(self.index)
+
 
 <FileChooserScreen>:
     label: label

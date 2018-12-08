@@ -6,7 +6,7 @@ mpb = Backend.MusicPlayerBackend()
 db = Backend.Database()
 
 kivy.require("1.10.0")
-
+from random import randint
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty
@@ -27,7 +27,6 @@ for kv in listdir(kv_path):
 
 # We will initialize the database
 db.DatabaseSetup()
-print("LVO: " + str(db.ListViewObjects()))
 
 
 class MainMenuScreen(Screen):
@@ -43,12 +42,14 @@ class MusicScreen(Screen):
         sound_names_list.append(sound_name[1])
 
     sound_data = ListProperty(sound_names_list)
-
-    soundName = StringProperty()
+    soundName = StringProperty("")
+    # A reference to the trackName
+    track_name = mpb.trackName
 
     def playMusic(self):
-
+        print("gst_obj: " + str(mpb.gst_object))
         mpb.track_play(mpb.return_gst_obj())
+        print("playMusic(): ", str(mpb.trackName))
         self.soundName = mpb.trackName
 
     def pauseMusic(self):
@@ -83,15 +84,17 @@ class FileChooserScreen(Screen):
 
 class PlaylistButton(ListItemButton):
 
-    @staticmethod
-    def get_button_index(index):
+    def get_button_index(self, index):
 
         db.getSoundLocation(MusicScreen().sound_data[index])
         file_path = str(mpb.trackPath)
         print("get_button_index() :", str(file_path))
 
         mpb.file_loader(file_path)
-        MusicScreen().playMusic()
+        #MusicScreen.soundName = mpb.trackName
+        print("mpb.trackName = " + str(mpb.trackName))
+        print("Name of the track" + str(MusicScreen.soundName))
+        MusicScreen.playMusic(MusicScreen)
 
 
 sm = ScreenManager()

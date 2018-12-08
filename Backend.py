@@ -1,7 +1,6 @@
 from kivy.core.audio import SoundLoader
 
 import sqlite3
-import copy
 
 from pathlib import Path
 
@@ -24,6 +23,7 @@ class MusicPlayerBackend:
 
         self.trackPath = file_path
         self.trackName = Path(file_path).parts[-1]
+        print("file_loader() :", str(self.trackName))
         self.gst_object = SoundLoader.load(file_path)
         print("file_loader() : File location is " + str(file_path))
         print("file_loader() : gStreamer obj is now " + str(self.gst_object))
@@ -34,7 +34,7 @@ class MusicPlayerBackend:
         The only reason we are creating this function is to get the same
         id of the gst_obj for track_play() and track_pause()
         """
-        gst_obj = copy.deepcopy(self.gst_object)
+        gst_obj = self.gst_object
         print(id(gst_obj))
         return gst_obj
 
@@ -49,7 +49,7 @@ class MusicPlayerBackend:
             Additionally, we are using the self.gst_object to play music.
             """
             self.trackName = Path(gst_obj.source).parts[-1]
-
+            print("track_play() :", str(self.trackName))
             gst_obj.loop = True
             gst_obj.play()
             print(id(gst_obj))

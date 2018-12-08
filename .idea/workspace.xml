@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Frontend.py" line="86" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5e394462-5e6a-49d2-927e-de21ae276b10" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/MusicPlayerBackend.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MusicPlayerFrontend.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicPlayerDatabase.db" beforeDir="false" afterPath="$PROJECT_DIR$/MusicPlayerDatabase.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kivyFiles/Screens.kv" beforeDir="false" afterPath="$PROJECT_DIR$/kivyFiles/Screens.kv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,6 +55,38 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-329857148">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="kv" value="80" />
+          <entry key="py" value="681" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="80" />
+          <entry key="Python" value="681" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5005774">
@@ -58,8 +95,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/kivyFiles/Screens.kv">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1584">
-                  <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+                <state relative-caret-position="198">
+                  <caret line="95" column="4" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -67,10 +104,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Frontend.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-86">
-                  <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+                <state relative-caret-position="841">
+                  <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
+                    <marker date="1544264920215" expanded="true" signature="2593:2595" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -83,8 +121,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Backend.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="352">
-                  <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+                <state relative-caret-position="531">
+                  <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -123,16 +161,17 @@
         <option value="$PROJECT_DIR$/MusicPlayerBackendRefactor.py" />
         <option value="$PROJECT_DIR$/newFrontend.py" />
         <option value="$PROJECT_DIR$/NewBackend.py" />
-        <option value="$PROJECT_DIR$/kivyFiles/Screens.kv" />
-        <option value="$PROJECT_DIR$/Frontend.py" />
+        <option value="$PROJECT_DIR$/timer.py" />
         <option value="$PROJECT_DIR$/Backend.py" />
+        <option value="$PROJECT_DIR$/Frontend.py" />
+        <option value="$PROJECT_DIR$/kivyFiles/Screens.kv" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-6" />
-    <option name="width" value="1093" />
-    <option name="height" value="947" />
+    <option name="x" value="-8" />
+    <option name="width" value="1095" />
+    <option name="height" value="949" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -217,27 +256,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MusicPlayerBackend" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Music-player" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MusicPlayerBackend.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="MusicPlayerFrontend" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Music-player" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,20 +298,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="timer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Music-player" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/timer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.MusicPlayerFrontend" />
-      <item itemvalue="Python.MusicPlayerBackend" />
       <item itemvalue="Python.newFrontend" />
       <item itemvalue="Python.Frontend" />
       <item itemvalue="Python.Backend" />
+      <item itemvalue="Python.timer" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Frontend" />
         <item itemvalue="Python.Backend" />
+        <item itemvalue="Python.timer" />
         <item itemvalue="Python.newFrontend" />
         <item itemvalue="Python.MusicPlayerFrontend" />
-        <item itemvalue="Python.MusicPlayerBackend" />
       </list>
     </recent_temporary>
   </component>
@@ -320,14 +359,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08746049" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.087243885" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19088937" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15319149" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -341,20 +381,20 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11090048" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.087243885" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17589176" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19007093" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3296433" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3296433" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3296433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -367,20 +407,8 @@
     <entry file="file://$PROJECT_DIR$/MusicPlayerFrontend.py" />
     <entry file="file://$PROJECT_DIR$/MusicPlayerBackendRefactor.py" />
     <entry file="file://$PROJECT_DIR$/MusicPlayerBackend.py" />
-    <entry file="file://$PROJECT_DIR$/newFrontend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewBackend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/newFrontend.py" />
+    <entry file="file://$PROJECT_DIR$/NewBackend.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/copy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
@@ -388,29 +416,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kivyFiles/Screens.kv">
+    <entry file="file://$PROJECT_DIR$/timer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+        <state relative-caret-position="36">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend.py">
+    <entry file="file://$PROJECT_DIR$/kivyFiles/Screens.kv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="95" column="4" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-86">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="841">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <marker date="1544264920215" expanded="true" signature="2593:2595" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
