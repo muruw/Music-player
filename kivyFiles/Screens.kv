@@ -1,4 +1,4 @@
-#: import Frontend Frontend
+#: import main main
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 #: import ListItemButton kivy.uix.listview.ListItemButton
 
@@ -75,7 +75,7 @@
             ListAdapter(data=root.sound_data,
             selection_mode='single',
             allow_empty_selection=True,
-            cls=Frontend.PlaylistButton)
+            cls=main.PlaylistButton)
         canvas.before:
             Color:
                 rgb: 1, 1, 1, 1

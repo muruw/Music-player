@@ -6,7 +6,7 @@ mpb = Backend.MusicPlayerBackend()
 db = Backend.Database()
 
 kivy.require("1.10.0")
-from random import randint
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty
@@ -103,11 +103,11 @@ sm.add_widget(MusicScreen(name = "music"))
 sm.add_widget(FileChooserScreen(name = "file_chooser"))
 
 
-class FrontendApp(App):
+class mainApp(App):
     def build(self):
         self.title = "MuBin"
         return sm
 
 
 if __name__ == "__main__":
-    FrontendApp().run()
+    mainApp().run()
