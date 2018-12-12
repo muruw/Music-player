@@ -12,8 +12,8 @@ class MusicPlayerBackend:
     gst_object = None
 
     def return_variables(self):
-        vars = (self.trackName, self.trackPath, self.gst_object)
-        return vars
+        variables = (self.trackName, self.trackPath, self.gst_object)
+        return variables
 
     def file_loader(self, file_path):
 
@@ -44,17 +44,15 @@ class MusicPlayerBackend:
 
     def track_play(self, gst_obj):
         try:
-
             print("Sound found at %s" % gst_obj.source)
             print("Sound is %.3f seconds" % gst_obj.length)
-
             """
             We will change the trackName variable to the current track's name
             Additionally, we are using the self.gst_object to play music.
             """
             self.trackName = Path(gst_obj.source).parts[-1]
             print("track_play() :", str(self.trackName))
-            gst_obj.loop = True
+            gst_obj.loop = False
             gst_obj.play()
             print(id(gst_obj))
 
@@ -118,7 +116,9 @@ class Database:
             result = self.cursor.fetchone()
             print(result)
             print("get_sound_location() :", str(result))
-            MusicPlayerBackend.trackPath = result[0]
+
+            track_path = result[0]
+            return track_path
         except:
             pass
 

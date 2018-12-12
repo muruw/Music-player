@@ -43,11 +43,19 @@ class MusicScreen(Screen):
     for sound_name in soundDirectory.items():
         sound_names_list.append(sound_name[1])
 
+    selected_value = StringProperty("Select a song")
+
     sound_data = ListProperty(sound_names_list)
     soundName = StringProperty("Select a song")
     # A reference to the trackName
 
+    def play_from_playlist(self, track_name):
 
+        self.selected_value = "Selected: {}".format(track_name)
+        print(self.selected_value)
+        track_path = db.getSoundLocation(track_name)
+        mpb.file_loader(track_path)
+        mpb.track_play(mpb.gst_object)
 
     def playMusic(self):
         print("gst_obj: " + str(mpb.gst_object))
@@ -55,19 +63,18 @@ class MusicScreen(Screen):
         print("playMusic(): ", str(mpb.trackName))
 
     def play_button_pressed(self):
-        self.soundName = mpb.trackName
+        self.selected_value = mpb.trackName
 
     def pauseMusic(self):
 
-        gst_obj_copy = mpb.return_gst_obj()
-        mpb.track_pause(gst_obj_copy)
+        mpb.track_pause(mpb.gst_object)
 
     def insertToDatabase(self):
 
         if mpb.trackName != "":
             if db.DatabaseCheckFile(str(mpb.trackName)):
                 db.DatabaseInsertFile((str(mpb.trackPath)), str(mpb.trackName))
-                self.sound_data.append(str(mpb.trackName))
+                #self.sound_data.append(str(mpb.trackName))
                 print("The track has been added to the playlist!")
             else:
                 print("InsertToDatabase() : Couldn't add the track to the playlist :(")
@@ -86,23 +93,6 @@ class FileChooserScreen(Screen):
         except:
             pass
 
-
-class PlaylistButton(ListItemButton):
-
-    def get_button_index(self, index):
-
-        db.getSoundLocation(MusicScreen().sound_data[index])
-        file_path = str(mpb.trackPath)
-        print("get_button_index() :", str(file_path))
-
-        mpb.file_loader(file_path)
-
-        #MusicScreen.soundName = mpb.trackName
-        #MusicScreen.playMusic(MusicScreen)
-        MusicScreen().playMusic()
-
-    def change_track_name(self, name):
-        MusicScreen().soundName = name
 
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
