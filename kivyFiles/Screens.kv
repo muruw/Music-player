@@ -28,6 +28,7 @@
 
 
 <MusicScreen>:
+    id: music_screen
 	canvas.before:
 		Rectangle:
 			pos: self.pos
@@ -43,6 +44,8 @@
 			pos_hint: {"x": 0.35, "top": 0.92}
 			size_hint: 0.080, 0.105
 			on_press: root.playMusic()
+			on_press: root.play_button_pressed()
+
     	Button:
 			background_normal: "pause_button.png"
 			pos_hint: {"x": 0.44, "top": 0.92}
@@ -53,7 +56,6 @@
 			pos_hint: {"x": 0.53, "top": 0.92}
 			size_hint: 0.080, 0.105
 			on_press: root.insertToDatabase()
-
 		Button:
 			background_normal: "next_button.png"
 			pos_hint: {"x": 0.62, "top": 0.92}
@@ -64,6 +66,7 @@
 			size_hint: 0.080, 0.105
 			on_release: root.manager.current = "main_menu"
 		Label:
+            id: cur_track_label
 			pos_hint: {"x": 0.33, "top": 0.90}
 			size_hint: 0.3, 0.3
 			text: root.soundName
@@ -93,9 +96,10 @@
         text: "ADVERTISEMENT: https://github.com/muruw/Music-player"
 
 <PlaylistButton>:
-    selected_color: 200, 200, 200, 1
+    selected_color: 0, .5, 1, 1
     deselected_color: 0, 0, 0, 1
     on_press: root.get_button_index(self.index)
+    on_press: root.change_track_name(self.text)
 
 
 <FileChooserScreen>:

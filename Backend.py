@@ -11,6 +11,10 @@ class MusicPlayerBackend:
     trackPath = None
     gst_object = None
 
+    def return_variables(self):
+        vars = (self.trackName, self.trackPath, self.gst_object)
+        return vars
+
     def file_loader(self, file_path):
 
         """
@@ -105,7 +109,6 @@ class Database:
                 data_items[data[0]] = data[1]
         except:
             pass
-        print(data_items)
         return data_items
 
     def getSoundLocation(self, sound_name):

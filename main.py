@@ -13,6 +13,8 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.listview import ListItemButton
 
+from kivy.clock import Clock
+
 from kivy.core.window import Window
 
 Window.clearcolor = (1, 1, 1, 1)
@@ -42,14 +44,17 @@ class MusicScreen(Screen):
         sound_names_list.append(sound_name[1])
 
     sound_data = ListProperty(sound_names_list)
-    soundName = StringProperty("")
+    soundName = StringProperty("Select a song")
     # A reference to the trackName
-    track_name = mpb.trackName
+
+
 
     def playMusic(self):
         print("gst_obj: " + str(mpb.gst_object))
         mpb.track_play(mpb.return_gst_obj())
         print("playMusic(): ", str(mpb.trackName))
+
+    def play_button_pressed(self):
         self.soundName = mpb.trackName
 
     def pauseMusic(self):
@@ -91,11 +96,13 @@ class PlaylistButton(ListItemButton):
         print("get_button_index() :", str(file_path))
 
         mpb.file_loader(file_path)
-        #MusicScreen.soundName = mpb.trackName
-        print("mpb.trackName = " + str(mpb.trackName))
-        print("Name of the track" + str(MusicScreen.soundName))
-        MusicScreen.playMusic(MusicScreen)
 
+        #MusicScreen.soundName = mpb.trackName
+        #MusicScreen.playMusic(MusicScreen)
+        MusicScreen().playMusic()
+
+    def change_track_name(self, name):
+        MusicScreen().soundName = name
 
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
