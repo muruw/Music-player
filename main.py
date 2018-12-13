@@ -1,5 +1,7 @@
 import kivy
 import Backend
+import time
+import vlc
 
 # Use mpb to access backend methods
 mpb = Backend.MusicPlayerBackend()
@@ -11,9 +13,6 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.listview import ListItemButton
-
-from kivy.clock import Clock
 
 from kivy.core.window import Window
 
@@ -94,10 +93,46 @@ class FileChooserScreen(Screen):
             pass
 
 
+class RadioScreen(Screen):
+
+    raadiod = [
+        "http://skyplus.babahhcdn.com/SKYPLUS",
+        "http://striiming.trio.ee/elmar.mp3",
+        "http://striiming.trio.ee/myhits.mp3",
+        "http://icecast.err.ee/raadio2.mp3",
+        "http://skyplus.babahhcdn.com:7004/NRJ",
+    ]
+
+    sound_file = vlc.MediaPlayer(raadiod[0])
+
+    def play_radio(self, index):
+
+        # Stop a song from playing
+        try:
+            mpb.track_pause(mpb.gst_object)
+        except:
+            pass
+
+        # We will get the index to make sure we are playing the
+        # right radio
+        try:
+            self.sound_file.stop()
+        except:
+            pass
+
+        self.sound_file = vlc.MediaPlayer(self.raadiod[index])
+        self.sound_file.play()
+        time.sleep(10)
+
+        while True:
+            time.sleep(1)
+
+
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
 sm.add_widget(MusicScreen(name = "music"))
 sm.add_widget(FileChooserScreen(name = "file_chooser"))
+sm.add_widget(RadioScreen(name = "radio"))
 
 
 class mainApp(App):
