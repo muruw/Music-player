@@ -52,7 +52,7 @@ class MusicPlayerBackend:
             """
             self.trackName = Path(gst_obj.source).parts[-1]
             print("track_play() :", str(self.trackName))
-            gst_obj.loop = False
+            gst_obj.loop = True
             gst_obj.play()
             print(id(gst_obj))
 
@@ -60,7 +60,9 @@ class MusicPlayerBackend:
             print("track_play() ERROR : gst_object wrong type")
 
     def track_pause(self, gst_obj):
-
+        print("dir used:", str(dir()))
+        print("globals used:", str(globals()))
+        print("locals used:", str(locals()))
         try:
 
             gst_obj.stop()

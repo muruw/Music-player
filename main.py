@@ -2,10 +2,12 @@ import kivy
 import Backend
 import time
 import vlc
+import threading
 
 # Use mpb to access backend methods
 mpb = Backend.MusicPlayerBackend()
 db = Backend.Database()
+
 
 kivy.require("1.10.0")
 
@@ -93,41 +95,94 @@ class FileChooserScreen(Screen):
             pass
 
 
+class RadioThread(threading.Thread):
+    def __init__(self, func):
+        self.running = False
+        self.func = func
+        super(RadioThread, self).__init__()
+
+    def start(self):
+        self.running = True
+        super(RadioThread, self).start()
+
+    def run(self):
+        while self.running:
+            self.func()
+
+    def stop(self):
+        self.running = False
+
+
+class RadioScreen(Screen):
+
+    # An instance of this screen's thread
+    raadiod = [
+    "http://skyplus.babahhcdn.com/SKYPLUS",
+    "http://striiming.trio.ee/elmar.mp3",
+    "http://striiming.trio.ee/myhits.mp3",
+    "http://icecast.err.ee/raadio2.mp3",
+    "http://skyplus.babahhcdn.com:7004/NRJ",
+    ]
+    index = 0
+    sound_file = vlc.MediaPlayer(raadiod[0])
+    radio_status = False
+
+    def app_play_radio(self):
+        self.radio = RadioThread(self.play_radio)
+        self.radio.start()
+
+    def app_stop_radio(self):
+        self.radio.stop()
+        self.sound_file.stop()
+
+    def play_radio(self):
+        self.sound_file = vlc.MediaPlayer(self.raadiod[0])
+        self.sound_file.play()
+        while True:
+            time.sleep(0.5)
+
+
+
+"""
 class RadioScreen(Screen):
 
     raadiod = [
-        "http://skyplus.babahhcdn.com/SKYPLUS",
-        "http://striiming.trio.ee/elmar.mp3",
-        "http://striiming.trio.ee/myhits.mp3",
-        "http://icecast.err.ee/raadio2.mp3",
-        "http://skyplus.babahhcdn.com:7004/NRJ",
+    "http://skyplus.babahhcdn.com/SKYPLUS",
+    "http://striiming.trio.ee/elmar.mp3",
+    "http://striiming.trio.ee/myhits.mp3",
+    "http://icecast.err.ee/raadio2.mp3",
+    "http://skyplus.babahhcdn.com:7004/NRJ",
     ]
+    index = 0
+    sound_file = vlc.MediaPlayer(raadiod[index])
+    radio_status = False
 
-    sound_file = vlc.MediaPlayer(raadiod[0])
+    def play_radio(self):
+        while self.radio_status == True:
+            self.sound_file.play()
+        time.sleep(0.05)
+    def stop_radio(self):
 
-    def play_radio(self, index):
+        self.radio_status = False
 
-        # Stop a song from playing
-        try:
-            mpb.track_pause(mpb.gst_object)
-        except:
-            pass
-
-        # We will get the index to make sure we are playing the
-        # right radio
-        try:
-            self.sound_file.stop()
-        except:
-            pass
+    def start_thread(self, index):
 
         self.sound_file = vlc.MediaPlayer(self.raadiod[index])
-        self.sound_file.play()
-        time.sleep(10)
-
-        while True:
-            time.sleep(1)
+        self.radio_status = True
+        self.t1 = threading.Thread(target=self.play_radio)
+        self.t1.start()
 
 
+class Radio(threading.Thread):
+
+    def __init__(self, queue):
+        threading.Thread.__init__(self)
+        self.queue = queue
+
+    def run(self):
+        time.sleep(5)
+        self.queue.put("Task finished")
+"""
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
 sm.add_widget(MusicScreen(name = "music"))

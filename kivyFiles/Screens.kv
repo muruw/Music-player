@@ -21,9 +21,9 @@
 			pos_hint: {"x": 0.45, "top": 0.6}
 			size_hint: 0.1, 0.12
 		Button:
-			background_normal: "SC_button.png"
-			on_release: root.manager.current = "soundcloud"
-			pos_hint: {"x": 0.65, "top": 0.59}
+			background_normal: "radio_button.png"
+			on_release: root.manager.current = "radio"
+			pos_hint: {"x": 0.65, "top": 0.605}
 			size_hint: 0.1, 0.12
 
 
@@ -69,7 +69,7 @@
             id: cur_track_label
 			pos_hint: {"x": 0.33, "top": 0.90}
 			size_hint: 0.3, 0.3
-			text: root.selected_value
+			text: "Your playlist:"
 			color: 0, 0, 0, 1
 			font_size: dp(30)
     ListView:
@@ -135,3 +135,21 @@
 			text: "Choose"
 			color:  0, 0, 0, 1
 			on_press: root.manager.current = "main_menu"
+
+<RadioScreen>:
+    canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "background.png"
+	FloatLayout:
+		Button:
+			background_normal: "sky_plus.png"
+			on_press: root.app_play_radio()
+			pos_hint: {"x": 0.10, "top": 0.8}
+			size_hint: 0.1, 0.12
+        Button:
+			background_normal: "stop_button.png"
+			on_press: root.app_stop_radio()
+			pos_hint: {"x": 0.45, "top": 0.3}
+			size_hint: 0.1, 0.12
