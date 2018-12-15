@@ -44,7 +44,6 @@
 			pos_hint: {"x": 0.35, "top": 0.92}
 			size_hint: 0.080, 0.105
 			on_press: root.playMusic()
-			on_press: root.play_button_pressed()
     	Button:
 			background_normal: "pause_button.png"
 			pos_hint: {"x": 0.44, "top": 0.92}
@@ -99,7 +98,6 @@
     id: playlist_button
     selected_color: 0, .5, 1, 1
     deselected_color: 0, 0, 0, 1
-    on_press: main.MusicScreen().play_button_pressed()
     on_press: main.MusicScreen().play_from_playlist(self.text)
     size: (30, '45dp')
 
@@ -146,10 +144,35 @@
 		Button:
 			background_normal: "sky_plus.png"
 			on_press: root.app_play_radio()
-			pos_hint: {"x": 0.10, "top": 0.8}
-			size_hint: 0.1, 0.12
+			pos_hint: {"x": 0, "top": 0.8}
+			size_hint: 0.15, 0.17
+		Button:
+			background_normal: "elmar.png"
+			on_press: root.app_play_radio()
+			pos_hint: {"x": 0, "top": 0.6}
+			size_hint: 0.2, 0.2
+		Button:
+			background_normal: "myhits.png"
+			on_press: root.app_play_radio()
+			pos_hint: {"x": 0.45, "top": 0.8}
+			size_hint: 0.2, 0.2
+		Button:
+			background_normal: "raadio2.png"
+			on_press: root.app_play_radio()
+			pos_hint: {"x": 0.65, "top": 0.785}
+			size_hint: 0.2, 0.17
+		Button:
+			background_normal: "energyfm.png"
+			on_press: root.app_play_radio()
+			pos_hint: {"x": 0.85, "top": 0.75}
+			size_hint: 0.08, 0.08
         Button:
 			background_normal: "stop_button.png"
 			on_press: root.app_stop_radio()
 			pos_hint: {"x": 0.45, "top": 0.3}
-			size_hint: 0.1, 0.12
+			size_hint: 0.080, 0.105
+        Button:
+			background_normal: "back_button.png"
+			pos_hint: {"x": 0.54, "top": 0.3}
+			size_hint: 0.080, 0.105
+			on_release: root.manager.current = "main_menu"

@@ -50,32 +50,37 @@ class MusicScreen(Screen):
     soundName = StringProperty("Select a song")
     # A reference to the trackName
 
-    def play_from_playlist(self, track_name):
+    sound_file = None
 
-        self.selected_value = "Selected: {}".format(track_name)
-        print(self.selected_value)
+    def play_from_playlist(self, track_name):
+        """
+        Please refer to MusicScreen().playMusic() as the functionality is the same.
+        The only difference is on the first line where we declare track_path
+        """
         track_path = db.getSoundLocation(track_name)
-        mpb.file_loader(track_path)
-        mpb.track_play(mpb.gst_object)
+        mpb.get_sound_file(track_path)
+        mpb.track_play(mpb.sound_file)
 
     def playMusic(self):
-        print("gst_obj: " + str(mpb.gst_object))
-        mpb.track_play(mpb.return_gst_obj())
-        print("playMusic(): ", str(mpb.trackName))
+        """
+        we are going to initialize VLC sound file with get_sound_file()
+        and it changes the mpb.sound_file to the corresponding file, which
+        we can later on use to play/stop music
+        """
+        mpb.get_sound_file(mpb.trackPath)
 
-    def play_button_pressed(self):
-        self.selected_value = mpb.trackName
+        mpb.track_play(mpb.sound_file)
+        print("playMusic(): ", str(mpb.trackName))
 
     def pauseMusic(self):
 
-        mpb.track_pause(mpb.gst_object)
+        mpb.track_pause()
 
     def insertToDatabase(self):
 
         if mpb.trackName != "":
             if db.DatabaseCheckFile(str(mpb.trackName)):
                 db.DatabaseInsertFile((str(mpb.trackPath)), str(mpb.trackName))
-                #self.sound_data.append(str(mpb.trackName))
                 print("The track has been added to the playlist!")
             else:
                 print("InsertToDatabase() : Couldn't add the track to the playlist :(")
@@ -87,12 +92,8 @@ class FileChooserScreen(Screen):
 
     def selectFile(self, *args):
 
-        try:
-            print(args[1][0])
-            self.label.text = args[1][0]
-            mpb.file_loader(args[1][0])
-        except:
-            pass
+        self.label.text = args[1][0]
+        mpb.get_file_path(args[1][0])
 
 
 class RadioThread(threading.Thread):
@@ -142,47 +143,6 @@ class RadioScreen(Screen):
             time.sleep(0.5)
 
 
-
-"""
-class RadioScreen(Screen):
-
-    raadiod = [
-    "http://skyplus.babahhcdn.com/SKYPLUS",
-    "http://striiming.trio.ee/elmar.mp3",
-    "http://striiming.trio.ee/myhits.mp3",
-    "http://icecast.err.ee/raadio2.mp3",
-    "http://skyplus.babahhcdn.com:7004/NRJ",
-    ]
-    index = 0
-    sound_file = vlc.MediaPlayer(raadiod[index])
-    radio_status = False
-
-    def play_radio(self):
-        while self.radio_status == True:
-            self.sound_file.play()
-        time.sleep(0.05)
-    def stop_radio(self):
-
-        self.radio_status = False
-
-    def start_thread(self, index):
-
-        self.sound_file = vlc.MediaPlayer(self.raadiod[index])
-        self.radio_status = True
-        self.t1 = threading.Thread(target=self.play_radio)
-        self.t1.start()
-
-
-class Radio(threading.Thread):
-
-    def __init__(self, queue):
-        threading.Thread.__init__(self)
-        self.queue = queue
-
-    def run(self):
-        time.sleep(5)
-        self.queue.put("Task finished")
-"""
 sm = ScreenManager()
 sm.add_widget(MainMenuScreen(name = "main_menu"))
 sm.add_widget(MusicScreen(name = "music"))
