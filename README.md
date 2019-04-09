@@ -6,6 +6,6 @@ https://github.com/muruw
 
 https://github.com/intermetric
 
-![Screenshot](mubin_home.png)
-![Screenshot](mubin_playlist.png)
-![Screenshot](mubin_radio.png)
+![Screenshot](mubin_home.PNG)
+![Screenshot](mubin_playlist.PNG)
+![Screenshot](mubin_radio.PNG)
