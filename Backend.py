@@ -2,6 +2,7 @@ import sqlite3
 import vlc
 # vlc requires import time
 import time
+from pathlib import Path
 
 
 class MusicPlayerBackend:
@@ -15,20 +16,24 @@ class MusicPlayerBackend:
     def get_file_path(self, path):
 
         self.trackPath = path
+        self.trackName = Path(self.trackPath).parts[-1]
 
     def get_sound_file(self, path):
+
         sound_file = vlc.MediaPlayer(path)
         self.sound_file = sound_file
 
     def track_play(self, sound_file):
-        if sound_file:
-            sound_file.stop()
+
+        sound_file.stop()
         sound_file.play()
 
-    def track_pause(self):
-
-        print(self.sound_file)
-        self.sound_file.stop()
+    def track_pause(self, sf):
+        if sf == None:
+            print("Nothing to stop")
+        else:
+            print(self.sound_file)
+            sf.stop()
 
 
 class Database:

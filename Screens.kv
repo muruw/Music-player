@@ -1,0 +1,224 @@
+#: import main main
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+
+<MainMenuScreen>:
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "background.png"
+	FloatLayout:
+		Button:
+			background_normal: "pl_button.png"
+			on_release: root.manager.current = "music"
+			pos_hint: {"x": 0.45, "top": 0.6}
+			size_hint: 0.11, 0.13
+		Button:
+			background_normal: "folder_button.png"
+			on_release: root.manager.current = "file_chooser"
+			pos_hint: {"x": 0.25, "top": 0.6}
+			size_hint: 0.11, 0.13
+		Button:
+			background_normal: "radio_button.png"
+			on_release: root.manager.current = "radio"
+			pos_hint: {"x": 0.65, "top": 0.605}
+			size_hint: 0.11, 0.13
+
+
+<MusicScreen>:
+    id: music_screen
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "background.png"
+    FloatLayout:
+    	Button:
+			background_normal: "previous_button.png"
+			pos_hint: {"x": 0.26, "top": 0.92}
+			size_hint: 0.080, 0.105
+    	Button:
+			background_normal: "play_button.png"
+			pos_hint: {"x": 0.35, "top": 0.92}
+			size_hint: 0.080, 0.105
+			on_press: root.playMusic()
+    	Button:
+			background_normal: "pause_button.png"
+			pos_hint: {"x": 0.44, "top": 0.92}
+			size_hint: 0.080, 0.105
+		Button:
+			background_normal: "stop_button.png"
+			pos_hint: {"x": 0.53, "top": 0.92}
+			size_hint: 0.080, 0.105
+			on_press: root.pauseMusic()
+		Button:
+			background_normal: "next_button.png"
+			pos_hint: {"x": 0.62, "top": 0.92}
+			size_hint: 0.080, 0.105
+		Button:
+			background_normal: "back_button.png"
+			pos_hint: {"x": 0.90, "top": 0.92}
+			size_hint: 0.080, 0.105
+			on_release: root.manager.current = "main_menu"
+		Button:
+			background_normal: "add_button.png"
+			pos_hint: {"x": 0.02, "top": 0.92}
+			size_hint: 0.080, 0.105
+			on_press: root.sound_data_append()
+			on_press: root.insertToDatabase()
+		Label:
+            id: cur_track_label
+			pos_hint: {"x": 0.33, "top": 0.9}
+			size_hint: 0.3, 0.3
+			text: "My playlist:"
+			color: 0, 0, 0, 1
+			font_size: dp(25)
+			font_name: "tahoma.ttf"
+    ListView:
+        size_hint_y: .675
+        adapter:
+            ListAdapter(data=root.sound_data,
+            selection_mode='single',
+            allow_empty_selection=True,
+            cls=ListItemButton)
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "background.png"
+    Label:
+        size_hint_y: .1
+        canvas.before:
+            Color:
+                rgb: .15, .26, .32
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        text: "https://github.com/muruw/Music-player"
+
+<ListItemButton>:
+    id: playlist_button
+    selected_color: 0, .5, 1, 1
+    deselected_color: 0, 0, 0, 1
+    on_release: main.MusicScreen().play_from_playlist(self.text)
+    size: (30, '45dp')
+
+<FileChooserScreen>:
+    label: label
+    orientation: 'vertical'
+    BoxLayout:
+        FileChooserIconView:
+            canvas.before:
+                Color:
+                    rgb: 0.15, 0.15, 0.15, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            on_selection: root.selectFile(*args)
+    BoxLayout:
+		orientation: "horizontal"
+		Label:
+			id: label
+			size_hint_y: .1
+			size_hint_x: .7
+			canvas.before:
+				Color:
+					rgb: 0, 0, 0, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+		Button:
+			size_hint_y: .1
+			size_hint_x: .3
+			background_normal: ''
+			background_color: 1, 1, 1, 1
+			text: "Choose"
+			color:  0, 0, 0, 1
+			on_press: root.manager.current = "main_menu"
+
+<RadioScreen>:
+    canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "background.png"
+	FloatLayout:
+		Label:
+            id: sky_plus
+			pos_hint: {"x": 0, "top": 0.8}
+			size_hint: 0.3, 0.3
+			text: "Sky Plus"
+			color: 0, 0, 0, 1
+			font_size: dp(25)
+            font_name: "tahoma.ttf"
+		Button:
+			background_normal: "sky_plus.png"
+			on_press: root.app_play_radio(0)
+			pos_hint: {"x": 0.082, "top": 0.62}
+			size_hint: 0.13, 0.16
+		Label:
+            id: elmar
+			pos_hint: {"x": 0.182, "top": 0.8}
+			size_hint: 0.3, 0.3
+			text: "Elmar"
+			color: 0, 0, 0, 1
+			font_size: dp(25)
+			font_name: "tahoma.ttf"
+		Button:
+			background_normal: "elmar.png"
+			on_press: root.app_play_radio(1)
+			pos_hint: {"x": 0.252, "top": 0.64}
+			size_hint: 0.16, 0.20
+		Label:
+            id: myhits
+			pos_hint: {"x": 0.36, "top": 0.8}
+			size_hint: 0.3, 0.3
+			text: "MyHits"
+			color: 0, 0, 0, 1
+			font_size: dp(25)
+			font_name: "tahoma.ttf"
+		Button:
+			background_normal: "myhits.png"
+			on_press: root.app_play_radio(2)
+			pos_hint: {"x": 0.392, "top": 0.64}
+			size_hint: 0.25, 0.22
+		Label:
+            id: r2
+			pos_hint: {"x": 0.55, "top": 0.8}
+			size_hint: 0.3, 0.3
+			text: "Raadio 2"
+			color: 0, 0, 0, 1
+			font_size: dp(25)
+			font_name: "tahoma.ttf"
+		Button:
+			background_normal: "raadio2.png"
+			on_press: root.app_play_radio(3)
+			pos_hint: {"x": 0.61, "top": 0.65}
+			size_hint: 0.18, 0.22
+		Label:
+            id: nrj
+			pos_hint: {"x": 0.73, "top": 0.8}
+			size_hint: 0.3, 0.3
+			text: "NRJ FM"
+			color: 0, 0, 0, 1
+			font_size: dp(25)
+			font_name: "tahoma.ttf"
+		Button:
+			background_normal: "energyfm.png"
+			on_press: root.app_play_radio(4)
+			pos_hint: {"x": 0.832, "top": 0.59}
+			size_hint: 0.10, 0.10
+        Button:
+			background_normal: "stop_button.png"
+			on_press: root.app_stop_radio()
+			pos_hint: {"x": 0.38, "top": 0.3}
+			size_hint: 0.080, 0.105
+        Button:
+			background_normal: "back_button.png"
+			on_press: root.manager.current = "main_menu"
+			pos_hint: {"x": 0.54, "top": 0.3}
+			size_hint: 0.080, 0.105

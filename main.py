@@ -3,11 +3,11 @@ import Backend
 import time
 import vlc
 import threading
+import copy
 
 # Use mpb to access backend methods
 mpb = Backend.MusicPlayerBackend()
 db = Backend.Database()
-
 
 kivy.require("1.10.0")
 
@@ -22,11 +22,13 @@ Window.clearcolor = (1, 1, 1, 1)
 
 # Locating all the .kv files
 from os import listdir
-
+"""
 kv_path = "./kivyFiles/"
 for kv in listdir(kv_path):
     print(kv)
     Builder.load_file(kv_path + kv)
+"""
+Builder.load_file("Screens.kv")
 
 # We will initialize the database
 db.DatabaseSetup()
@@ -45,7 +47,7 @@ class MusicScreen(Screen):
         sound_names_list.append(sound_name[1])
 
     selected_value = StringProperty("Select a song")
-
+    current_track_name = ""
     sound_data = ListProperty(sound_names_list)
     soundName = StringProperty("Select a song")
     # A reference to the trackName
@@ -60,6 +62,7 @@ class MusicScreen(Screen):
         track_path = db.getSoundLocation(track_name)
         mpb.get_sound_file(track_path)
         mpb.track_play(mpb.sound_file)
+        print("Song played")
 
     def playMusic(self):
         """
@@ -74,10 +77,16 @@ class MusicScreen(Screen):
 
     def pauseMusic(self):
 
-        mpb.track_pause()
+        mpb.track_pause(mpb.sound_file)
+
+    def sound_data_append(self):
+        if mpb.trackName != "":
+            self.sound_data.append(mpb.trackName)
+        else:
+            print("Nothing to insert to the database")
 
     def insertToDatabase(self):
-
+        self.current_track_name = mpb.trackName
         if mpb.trackName != "":
             if db.DatabaseCheckFile(str(mpb.trackName)):
                 db.DatabaseInsertFile((str(mpb.trackPath)), str(mpb.trackName))
@@ -128,7 +137,9 @@ class RadioScreen(Screen):
     sound_file = vlc.MediaPlayer(raadiod[0])
     radio_status = False
 
-    def app_play_radio(self):
+    def app_play_radio(self, radio_index):
+        self.index = radio_index
+
         self.radio = RadioThread(self.play_radio)
         self.radio.start()
 
@@ -137,7 +148,7 @@ class RadioScreen(Screen):
         self.sound_file.stop()
 
     def play_radio(self):
-        self.sound_file = vlc.MediaPlayer(self.raadiod[0])
+        self.sound_file = vlc.MediaPlayer(self.raadiod[self.index])
         self.sound_file.play()
         while True:
             time.sleep(0.5)
