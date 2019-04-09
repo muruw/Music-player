@@ -1,6 +1,6 @@
 # Music-player
 
-Music player with SoundCloud support
+Music player that plays top Estonian radios and user picked songs using VLC player
 
 
 https://github.com/muruw
