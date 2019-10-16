@@ -1,11 +1,11 @@
-# Music-player
+# MuBin
 
-Music player that plays top Estonian radios and user picked songs using VLC player
+Audio player that plays top Estonian radios and user picked songs using VLC.
 
 https://github.com/muruw
 
 https://github.com/intermetric
 
-![Screenshot](mubin_home.PNG)
-![Screenshot](mubin_playlist.PNG)
-![Screenshot](mubin_radio.PNG)
+![Screenshot](img/mubin_home.PNG)
+![Screenshot](img/mubin_playlist.PNG)
+![Screenshot](img/mubin_radio.PNG)
